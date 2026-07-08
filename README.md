@@ -29,6 +29,54 @@ graph TD;
     TTS_API -->|Generates Audio| TTS[Edge-TTS Engine];
     TTS -->|Plays Sound| AudioOut((Audio Output));
 ```
+```
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- **Python 3.12+**
+- **FFmpeg**: Required by `faster-whisper` and `edge-tts` for audio processing.
+  - **Windows**: Download from [gyan.dev](https://www.gyan.dev/ffmpeg/builds/) or install via `winget install ffmpeg`. Ensure it is added to your system PATH.
+  - **macOS**: Install via Homebrew: `brew install ffmpeg`
+  - **Linux (Debian/Ubuntu)**: `sudo apt update && sudo apt install ffmpeg`
+
+### Quick Start Guide
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ritikthakur22/voice_based_email.git
+   cd voice_based_email
+   ```
+
+2. **Create and activate a virtual environment:**
+   - **Windows:**
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
+   - **macOS/Linux:**
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Seed demo data (Optional):**
+   Generates a set of realistic demo emails in your local `storage/` directory so you have content to interact with immediately.
+   ```bash
+   python seed_emails.py
+   ```
+
+5. **Start the server:**
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+6. **Access the application:**
+   Open your browser and navigate to `http://127.0.0.1:8000`. Ensure your browser allows microphone permissions for `localhost`.
 
 ## 🎙️ Voice Actions & Triggers
 The application defaults to **Auto Voice Mode**. It continuously listens and uses Voice Activity Detection (VAD) to know when you finish speaking. You can toggle to Manual mode by clicking the button above the microphone.
